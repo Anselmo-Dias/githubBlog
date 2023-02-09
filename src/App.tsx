@@ -1,3 +1,12 @@
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
+import { GlobalStyles } from './styles/Global'
+
 export function App() {
-  return <h1>ASd</h1>
+  return (
+    <BrowserRouter>
+      <Router />
+      <GlobalStyles />
+    </BrowserRouter>
+  )
 }
