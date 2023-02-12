@@ -11,6 +11,10 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 62.5%;
     }
 
+    body {
+        background-color: #071422;
+    }
+
     body,input,select, textarea {
         font-family: "Poppins", sans-serif;
         font-size: 1.6rem;

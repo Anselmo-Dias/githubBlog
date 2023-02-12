@@ -3,7 +3,7 @@ import backgroundImg from '../../assets/background.svg'
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 100vh;
+  height: 42.9rem;
   background-image: url(${backgroundImg});
   background-size: contain;
   background-repeat: no-repeat;
