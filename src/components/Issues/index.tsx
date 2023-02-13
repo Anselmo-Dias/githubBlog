@@ -1,58 +1,30 @@
+import { useContext } from 'react'
+import ReactMarkdown from 'react-markdown'
+import { ReposContext } from '../../context/ReposContext'
 import { Card, Content, IssuesContainer, Wrapper } from './styles'
 
+interface dataIssuesProps {
+  title: string
+  body: string
+}
 export function Issues() {
+  const { dataIssues } = useContext(ReposContext)
+
   return (
     <IssuesContainer>
       <Wrapper>
         <Content>
-          <Card>
-            <div>
-              <h1>JavaScript data types and data structures</h1>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos laudantium ipsum pariatur veniam nesciunt praesentium
-              amet rerum deserunt necessitatibus cupiditate, voluptas et,
-              reiciendis maxime quia dolor beatae ullam numquam perspiciatis.
-            </p>
-          </Card>
-          <Card>
-            <div>
-              <h1>JavaScript data types and data structures</h1>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos laudantium ipsum pariatur veniam nesciunt praesentium
-              amet rerum deserunt necessitatibus cupiditate, voluptas et,
-              reiciendis maxime quia dolor beatae ullam numquam perspiciatis.
-            </p>
-          </Card>
-          <Card>
-            <div>
-              <h1>JavaScript data types and data structures</h1>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos laudantium ipsum pariatur veniam nesciunt praesentium
-              amet rerum deserunt necessitatibus cupiditate, voluptas et,
-              reiciendis maxime quia dolor beatae ullam numquam perspiciatis.
-            </p>
-          </Card>
-          <Card>
-            <div>
-              <h1>JavaScript data types and data structures</h1>
-              <span>Há 1 dia</span>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos laudantium ipsum pariatur veniam nesciunt praesentium
-              amet rerum deserunt necessitatibus cupiditate, voluptas et,
-              reiciendis maxime quia dolor beatae ullam numquam perspiciatis.
-            </p>
-          </Card>
+          {dataIssues.map((itens: dataIssuesProps) => {
+            return (
+              <Card key={itens.title}>
+                <div>
+                  <h1>{itens.title}</h1>
+                  <span>Há 1 dia</span>
+                </div>
+                <ReactMarkdown>{itens.body}</ReactMarkdown>
+              </Card>
+            )
+          })}
         </Content>
       </Wrapper>
     </IssuesContainer>

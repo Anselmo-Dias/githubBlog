@@ -10,6 +10,7 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3.2rem;
+  padding-bottom: 5rem;
 `
 export const Card = styled.div`
   display: flex;
@@ -17,16 +18,22 @@ export const Card = styled.div`
   justify-content: flex-start;
   flex-direction: column;
 
-  padding: 3.2rem;
+  height: 35rem;
+
+  padding: 5.2rem;
   gap: 2rem;
 
   background: #112131;
   border-radius: 10px;
+  white-space: wrap;
+  overflow: hidden;
+  text-align: letf;
 
   & > div {
+    width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 
   h1 {
@@ -38,8 +45,7 @@ export const Card = styled.div`
   }
 
   span {
-    width: 9rem;
-    font-size: 1.6rem;
+    /* width: 9rem; */
     color: #afc2d4;
   }
 `

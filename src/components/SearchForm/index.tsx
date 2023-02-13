@@ -2,8 +2,9 @@ import { MagnifyingGlass } from 'phosphor-react'
 import { useForm } from 'react-hook-form'
 import { Content, SearchFormContainer, Wrapper } from './styles'
 import * as zod from 'zod'
-import axios from 'axios'
-import { useEffect } from 'react'
+import { ReposContext } from '../../context/ReposContext'
+import { useContext } from 'react'
+
 // import { useState } from 'react'
 
 const searchFormSchema = zod.object({
@@ -13,42 +14,26 @@ const searchFormSchema = zod.object({
 type SearchFormSchemaProps = zod.infer<typeof searchFormSchema>
 
 export function SearchForm() {
-  //   const [dataForm, setDataForm] = useState<SearchFormSchemaProps>()
-
-  useEffect(() => {
-    axios
-      .get('https://api.github.com/repos/Anselmo-Dias/githubBlog/issues/1 ')
-      .then((response) => {
-        console.log(response.data)
-      })
-  }, [])
+  const { dataIssues, fetchIssues } = useContext(ReposContext)
 
   const {
     register,
     handleSubmit,
+    // watch,
     formState: { isSubmitting },
   } = useForm<SearchFormSchemaProps>()
 
+  // const searchForm = watch('query')
+
   async function handleSearchTransaction(data: SearchFormSchemaProps) {
-    // await fetchIssues(data.query)
+    await fetchIssues(data.query)
   }
-
-//   async function fetchIssues(query: string) {
-//     const response = await axios.get('https://api.github.com/search/issues', {
-//       params: {
-//         q: query,
-//       },
-//     })
-
-//     console.log(response.data)
-//   }
-
   return (
     <SearchFormContainer>
       <Wrapper>
         <div>
           <strong>Publicações</strong>
-          <span>4 publicações</span>
+          <span>{dataIssues[0]?.number} publicações</span>
         </div>
         <Content onSubmit={handleSubmit(handleSearchTransaction)}>
           <input
