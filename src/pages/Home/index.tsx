@@ -51,15 +51,12 @@ export function Home() {
               <p>{repos?.bio}</p>
               <AdditionalInformation>
                 <div>
-                  {' '}
                   <img src={gitHubImg} alt="" /> {repos?.name}
                 </div>
                 <div>
-                  {' '}
                   <img src={buildingImg} alt="" /> Diasconnection
                 </div>
                 <div>
-                  {' '}
                   <img src={peopleImg} alt="" /> {repos?.followers} seguidores
                 </div>
               </AdditionalInformation>

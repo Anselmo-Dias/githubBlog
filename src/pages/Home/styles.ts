@@ -34,11 +34,28 @@ export const Biography = styled.div`
   }
 `
 
+// export const Divider = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+
+//   width: 100%;
+
+//   & > img {
+//     width: 14.8rem;
+//     height: 14.8rem;
+
+//     border-radius: 8px;
+//   }
+// `
+
 export const LinkGitHub = styled.div`
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  justify-content: center;
+  justify-content: flex-end;
+
+  width: 35%;
 
   a {
     font-family: 'Poppins';

@@ -27,6 +27,7 @@ interface postDataProps {
   user: {
     login: string
   }
+  html_url: string
 }
 
 export function Post() {
@@ -56,7 +57,7 @@ export function Post() {
                 {' '}
                 <ArrowBendDownLeft /> VOLTAR
               </a>
-              <a href="">
+              <a href={postData?.html_url}>
                 VER NO GITHUB <img src={send} alt="" />
               </a>
             </div>
@@ -79,7 +80,11 @@ export function Post() {
         </ContentMainContainer>
         <Paragraphs>
           <p>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <ReactMarkdown
+              rawSourcePos
+              includeElementIndex
+              remarkPlugins={[remarkGfm]}
+            >
               {postData?.body ? postData?.body : 'Carregando...'}
             </ReactMarkdown>
           </p>

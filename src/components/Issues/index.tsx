@@ -24,7 +24,7 @@ export function Issues() {
                 </div>
                 <p>
                   <a href={`/issues/${itens.number}`}>
-                    <ReactMarkdown>{itens.body}</ReactMarkdown>
+                    <ReactMarkdown rawSourcePos>{itens.body}</ReactMarkdown>
                   </a>
                 </p>
               </Card>
