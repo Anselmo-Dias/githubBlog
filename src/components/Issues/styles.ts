@@ -41,6 +41,14 @@ export const Card = styled.div`
   }
 
   p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+  }
+
+  a {
     color: #afc2d4;
   }
 

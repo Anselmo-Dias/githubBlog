@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { DefaultLayout } from './layout/DefautLayout'
 import { Home } from './pages/Home'
-import { Issues } from './pages/IssuesContainer'
+import { Post } from './pages/Post'
 
 export function Router() {
   return (
@@ -9,7 +9,7 @@ export function Router() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
 
-        <Route path="/issues" element={<Issues />} />
+        <Route path="/issues/:postId" element={<Post />} />
       </Route>
     </Routes>
   )

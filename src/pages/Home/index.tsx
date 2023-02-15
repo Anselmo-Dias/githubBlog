@@ -48,10 +48,7 @@ export function Home() {
             <img src={repos?.avatar_url} alt="Foto do usuario Anselmo Dias" />
             <InforsBiography>
               <h1>{repos?.login}</h1>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa
-                fugiat illo molestias debitis repellat quas explicabo doloribus,
-              </p>
+              <p>{repos?.bio}</p>
               <AdditionalInformation>
                 <div>
                   {' '}

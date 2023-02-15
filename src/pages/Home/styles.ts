@@ -69,6 +69,8 @@ export const InforsBiography = styled.div`
     font-weight: 700;
     font-size: 2.4rem;
     line-height: 130%;
+
+    margin-bottom: 1rem;
   }
 `
 export const AdditionalInformation = styled.div`

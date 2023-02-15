@@ -6,6 +6,7 @@ import { Card, Content, IssuesContainer, Wrapper } from './styles'
 interface dataIssuesProps {
   title: string
   body: string
+  number: number
 }
 export function Issues() {
   const { dataIssues } = useContext(ReposContext)
@@ -21,7 +22,11 @@ export function Issues() {
                   <h1>{itens.title}</h1>
                   <span>Há 1 dia</span>
                 </div>
-                <ReactMarkdown>{itens.body}</ReactMarkdown>
+                <p>
+                  <a href={`/issues/${itens.number}`}>
+                    <ReactMarkdown>{itens.body}</ReactMarkdown>
+                  </a>
+                </p>
               </Card>
             )
           })}
