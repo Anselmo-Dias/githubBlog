@@ -18,6 +18,7 @@ import remarkGfm from 'remark-gfm'
 import logoGitHubImg from '../../assets/logoGitHub.svg'
 import calendatyImg from '../../assets/calendary.svg'
 import messages from '../../assets/messages.svg'
+import moment from 'moment'
 
 interface postDataProps {
   title: string
@@ -42,7 +43,6 @@ export function Post() {
       )
 
       setPostData(response.data)
-      console.log(response.data)
     }
     fetchIssuesSpecifc()
   }, [postId])
@@ -69,7 +69,7 @@ export function Post() {
               </p>
               <p>
                 <img src={calendatyImg} alt="" />
-                Há 1 dia
+                {moment(postData?.created_at).format('L')}
               </p>
               <p>
                 <img src={messages} alt="" />

@@ -5,10 +5,11 @@ interface ReposProviderProps {
   children: ReactNode
 }
 
-interface dataIssuesProps {
+export interface dataIssuesProps {
   title: string
   body: string
   number: number
+  created_at: string
 }
 
 // interface IssuesItemsProps {

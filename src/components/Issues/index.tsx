@@ -1,13 +1,9 @@
 import { useContext } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { ReposContext } from '../../context/ReposContext'
+import { dataIssuesProps, ReposContext } from '../../context/ReposContext'
 import { Card, Content, IssuesContainer, Wrapper } from './styles'
+import moment from 'moment'
 
-interface dataIssuesProps {
-  title: string
-  body: string
-  number: number
-}
 export function Issues() {
   const { dataIssues } = useContext(ReposContext)
 
@@ -20,7 +16,7 @@ export function Issues() {
               <Card key={itens.title}>
                 <div>
                   <h1>{itens.title}</h1>
-                  <span>Há 1 dia</span>
+                  <span>{moment(itens.created_at).format('L')}</span>
                 </div>
                 <p>
                   <a href={`/issues/${itens.number}`}>
