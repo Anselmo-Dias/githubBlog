@@ -13,6 +13,8 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         background-color: #071422;
+        overflow-x: hidden;
+
     }
 
     body,input,select, textarea {

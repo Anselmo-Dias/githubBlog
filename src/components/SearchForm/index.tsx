@@ -14,7 +14,7 @@ const searchFormSchema = zod.object({
 type SearchFormSchemaProps = zod.infer<typeof searchFormSchema>
 
 export function SearchForm() {
-  const { dataIssues, fetchIssues } = useContext(ReposContext)
+  const { dataIssues, searchIssues } = useContext(ReposContext)
 
   const {
     register,
@@ -26,14 +26,14 @@ export function SearchForm() {
   // const searchForm = watch('query')
 
   async function handleSearchTransaction(data: SearchFormSchemaProps) {
-    await fetchIssues(data.query)
+    await searchIssues(data.query)
   }
   return (
     <SearchFormContainer>
       <Wrapper>
         <div>
           <strong>Publicações</strong>
-          <span>{dataIssues[0]?.number} publicações</span>
+          <span>{dataIssues.length} publicações</span>
         </div>
         <Content onSubmit={handleSubmit(handleSearchTransaction)}>
           <input

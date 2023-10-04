@@ -1,6 +1,5 @@
 // import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { api } from '../../lib/axios'
+import { useContext, useEffect, useState } from 'react'
 import {
   AdditionalInformation,
   Biography,
@@ -17,52 +16,47 @@ import peopleImg from '../../assets/people.svg'
 import sendImg from '../../assets/send.svg'
 import { Issues } from '../../components/Issues'
 import { SearchForm } from '../../components/SearchForm'
-
-interface ReposProps {
-  name: string
-  login: string
-  bio: string
-  avatar_url: string
-  html_url: string
-  followers: number
-}
+import { ReposContext } from '../../context/ReposContext'
+import { Navigate } from 'react-router-dom'
 
 export function Home() {
-  const [repos, setRepos] = useState<ReposProps>()
-
-  async function fetchRepos() {
-    const response = await api.get('/Anselmo-Dias')
-
-    setRepos(response.data)
-  }
+  const [sucess, setSucess] = useState(true)
+  const { inforUser } = useContext(ReposContext)
 
   useEffect(() => {
-    fetchRepos()
+    if (!inforUser) {
+      setSucess(false)
+    }
   }, [])
 
   return (
     <HomeContainer>
+      {!sucess && <Navigate to="/" />}
       <Wrapper>
         <Content>
           <Biography>
-            <img src={repos?.avatar_url} alt="Foto do usuario Anselmo Dias" />
+            <img src={inforUser?.avatar_url} alt="Foto do usuario" />
             <InforsBiography>
-              <h1>{repos?.login}</h1>
-              <p>{repos?.bio}</p>
+              <h1>{inforUser?.login}</h1>
+              <p>{inforUser?.bio}</p>
               <AdditionalInformation>
                 <div>
-                  <img src={gitHubImg} alt="" /> {repos?.name}
+                  <img src={gitHubImg} alt="" /> {inforUser?.name}
                 </div>
                 <div>
-                  <img src={buildingImg} alt="" /> Diasconnection
+                  <img src={buildingImg} alt="" />{' '}
+                  {inforUser?.company ? inforUser?.company : 'diasconnection'}
                 </div>
                 <div>
-                  <img src={peopleImg} alt="" /> {repos?.followers} seguidores
+                  <img src={peopleImg} alt="" /> {inforUser?.followers}{' '}
+                  seguidores
                 </div>
               </AdditionalInformation>
             </InforsBiography>
             <LinkGitHub>
-              <a href={repos?.html_url}>GITHUB</a>
+              <a target="_blank" href={inforUser?.html_url} rel="noreferrer">
+                GITHUB
+              </a>
               <img src={sendImg} alt="" />
             </LinkGitHub>
           </Biography>
